@@ -1,1 +1,3 @@
 theme: jekyll-theme-slate
+title: Blue-green deployment in EKS
+description: Blue-green deployment in EKS using namespace separation
