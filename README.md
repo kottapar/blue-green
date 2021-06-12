@@ -22,11 +22,13 @@ As you might know, with payment apps it is not possible to test all scenarios co
 4. Repeat this cycle again
 
 ### Proposed changes
-So we sat down with the architecture team and our AWS vendors to come up with the below design. Here's what we did. 
+So we sat down with the architecture team and our AWS vendors to come up with the below design. Here's what we did. We noticed that the current EKS cluster isn't loaded and so decided to implement this via namespace segregation instead of creating another EKS cluster. 
 
 1. created a new subdomain preprod.myapp.com
 2. created two new namespaces blue and green with their corresponding ingress controllers and ALBs
 3. The configs in the Nginx instances were seperated for the namespaces
 4. As the HA Nginx is the API gateway, we'll control the direction of the prod traffic there
+5. 
+
 
 ![](/blue-green.jpg)
