@@ -71,7 +71,8 @@ Once the BAT testing in prod is completed, we'll then take a call if we're good 
 
 1. We can quickly revert back to the previous code in case of any unforeseen issues
 2. We'll still have the v2 code in prod so we can continue debugging and testing
+3. We used this approach to do away with a separate dev EKS cluster. We used namespaces to colocate the DEV and UAT environments in one EKS cluster
 
-So this is a brief explanation of what we did. Please feel free to ask any questions and I'll try to answer. Also do feel free to advise any improvements. It always helps. 
+So this is a brief explanation of what we did. Please feel free to ask any questions and advise on any improvements. It always helps. 
 
 
