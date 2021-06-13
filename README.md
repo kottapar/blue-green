@@ -75,4 +75,6 @@ Once the BAT testing in prod is completed, we'll then take a call if we're good 
 
 So this is a brief explanation of what we did. Please feel free to ask any questions and advise on any improvements. It always helps. 
 
+PS : The diagrams presented here are available as editable PNGs in the repo. I used draw.io to create them. 
+
 
