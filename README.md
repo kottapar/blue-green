@@ -30,5 +30,24 @@ So we sat down with the architecture team and our AWS vendors to come up with th
 4. As the HA Nginx is the API gateway, we'll control the direction of the prod traffic there
 5. 
 
-
 ![](/blue-green.jpg)
+
+
+**Nginx config**
+```
+upstream myapp-prod {
+  zone myapp-blue 256k;
+  random two least_conn;
+  server internal-b44a8350-myapp-blue-1234.us-west2-1.elb.amazonaws.com:80  max_fails=1 fail_timeout=10s resolve;
+#  server internal-b44a8350-myapp-green-1234.us-west2-1.elb.amazonaws.com:80  max_fails=1 fail_timeout=10s resolve;
+}
+
+upstream myapp-preprod {
+  zone myapp-green 256k;
+  random two least_conn;
+#  server internal-b44a8350-myapp-blue-1234.us-west2-1.elb.amazonaws.com:80  max_fails=1 fail_timeout=10s resolve;
+  server internal-b44a8350-myapp-green-1234.us-west2-1.elb.amazonaws.com:80  max_fails=1 fail_timeout=10s resolve;
+}
+```
+
+Now 
