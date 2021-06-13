@@ -1,5 +1,5 @@
 
-It's been about 18 months since we implemented a blue-green deployment model using namespace separation in an AWS EKS cluster. It has been quite some time since I wrote and also I wanted to use github pages instead of Medium. So I wanted to write about how we implemented this. 
+It's been about 18 months since we implemented a blue-green deployment model using namespace separation in an AWS EKS cluster. I wanted to share about how we implemented this.
 There's no one way to implement these things, but this is what we did at that time considering our architecture design and other constraints. 
 
 In order to explain this let's consider a hypothetical mobile app, myapp which is used for making utility payments. It has the usual APIs for user login, user profile and payment etc. It will also make calls to Mastercard and Visa for processing the payments. Each of these will be served by their corresponding microservices; In this case let's assume them to be payment, user-login, user-profile and so on. 
@@ -22,7 +22,7 @@ As you might know, with payment apps it is not possible to test all scenarios co
 4. Repeat this cycle again
 
 ### Proposed changes
-So we sat down with the architecture team and our AWS vendors to come up with the below design. Here's what we did. We noticed that the current EKS cluster isn't loaded and so decided to implement this via namespace segregation instead of creating another EKS cluster. 
+So we sat down with the architecture team and our AWS vendors to come up with the below design. Here's what we did. We noticed that the current EKS cluster's utilization is about 15% and so decided to implement this via namespace segregation instead of creating another EKS cluster. 
 
 1. created a new subdomain preprod.myapp.com
 2. created two new namespaces blue and green with their corresponding ingress controllers and ALBs
